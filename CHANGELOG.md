@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.7...v1.1.8) (2026-04-15)
+
+
+### Bug Fixes
+
+* ensure npm publish triggers and include node engines ([c3f718e](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/c3f718eab0a8ac33745e03b8bda39719b8e63665))
+
 ## [1.1.7](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.6...v1.1.7) (2026-04-15)
 
 
