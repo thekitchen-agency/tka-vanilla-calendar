@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.4...v1.1.5) (2026-04-15)
+
+
+### Bug Fixes
+
+* revert base to repo name and simplify input paths ([4a58f52](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/4a58f52bf2d74ff64f76ffd9f8eb35bd595ee179))
+
 ## [1.1.4](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.3...v1.1.4) (2026-04-15)
 
 
