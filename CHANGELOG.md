@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.0...v1.1.1) (2026-04-15)
+
+
+### Bug Fixes
+
+* use relative paths in vite.config.js for ESM compatibility ([be8228a](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/be8228a4d49792f50865386ea6bd18b1dd198e1b))
+
 # [1.1.0](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.0.7...v1.1.0) (2026-04-15)
 
 
