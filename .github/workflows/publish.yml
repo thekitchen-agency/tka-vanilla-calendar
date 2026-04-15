@@ -8,7 +8,9 @@ on:
 
 permissions:
   id-token: write
-  contents: write    # Required to push commits/tags back to the repo
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
   release:
@@ -17,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Required for semantic-release to read commit history
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -33,7 +35,17 @@ jobs:
         run: npm run build
 
       - name: Release
+        id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
         run: npx semantic-release
+
+      - name: Publish to npm
+        # Only publish if semantic-release successfully created a new release
+        # We use a manual publish here to ensure OIDC provenance is triggered correctly
+        run: |
+          if [ "${{ steps.semantic.outputs.new_release_published }}" = "true" ]; then
+            npm publish --provenance
+          else
+            echo "No new release to publish."
+          fi
