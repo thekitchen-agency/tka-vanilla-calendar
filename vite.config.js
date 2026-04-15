@@ -25,9 +25,10 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
-    base: '/tka-vanilla-calendar/',
+    base: './',
     build: {
       outDir: 'dist-demo',
+      emptyOutDir: true,
       rollupOptions: {
         input: {
           main: 'index.html',

@@ -1,5 +1,7 @@
-import { TkaCalendar } from './src/index.js';
-import { de, enUS, fr } from 'date-fns/locale';
+import { TkaCalendar } from './src/calendar.js';
+import { de } from 'date-fns/locale/de';
+import { enUS } from 'date-fns/locale/en-US';
+import { fr } from 'date-fns/locale/fr';
 import { addMonths } from 'date-fns';
 
 const locales = { de, enUS, fr };
