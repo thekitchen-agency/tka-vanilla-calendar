@@ -2,6 +2,10 @@
   "name": "tka-calendar",
   "private": false,
   "version": "1.0.6",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thekitchen-agency/tka-vanilla-calendar.git"
+  },
   "type": "module",
   "main": "./dist/tka-calendar.umd.cjs",
   "module": "./dist/tka-calendar.js",
