@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'path'
 
 export default defineConfig(({ mode }) => {
   const isLib = mode === 'lib';
@@ -8,7 +7,7 @@ export default defineConfig(({ mode }) => {
     return {
       build: {
         lib: {
-          entry: resolve(__dirname, 'src/index.js'),
+          entry: 'src/index.js',
           name: 'TkaCalendar',
           fileName: 'tka-calendar'
         },
@@ -31,8 +30,8 @@ export default defineConfig(({ mode }) => {
       outDir: 'dist-demo',
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index.html'),
-          playground: resolve(__dirname, 'playground.html')
+          main: 'index.html',
+          playground: 'playground.html'
         }
       }
     }
