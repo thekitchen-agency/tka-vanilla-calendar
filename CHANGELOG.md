@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.1...v1.1.2) (2026-04-15)
+
+
+### Bug Fixes
+
+* use relative paths for assets to support GH Pages subdirectory ([be91ec7](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/be91ec74666a6a6a1f7acff9b07e7e5c8c8042bd))
+
 ## [1.1.1](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.0...v1.1.1) (2026-04-15)
 
 
