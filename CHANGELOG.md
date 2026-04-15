@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.2...v1.1.3) (2026-04-15)
+
+
+### Bug Fixes
+
+* explicit locale imports and relative base for demo bundling ([a1bb678](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/a1bb678969a30f98b90b6e7489603489bfe3490d))
+
 ## [1.1.2](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.1...v1.1.2) (2026-04-15)
 
 
