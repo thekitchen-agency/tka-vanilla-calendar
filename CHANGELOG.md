@@ -1,3 +1,11 @@
+## [1.1.4](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.3...v1.1.4) (2026-04-15)
+
+
+### Bug Fixes
+
+* explicit imports for main.js and calendar.js ([9b0f21c](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/9b0f21cd49c16c8c74c876031ee17a50aa3b742f))
+* standardize outDir to dist and explicit imports ([96a563f](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/96a563f41275e96c9c29886ad2905d11a72e3fdb))
+
 ## [1.1.3](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.2...v1.1.3) (2026-04-15)
 
 
