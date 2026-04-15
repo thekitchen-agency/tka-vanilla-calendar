@@ -1,3 +1,11 @@
+# 1.0.0 (2026-04-15)
+
+
+### Bug Fixes
+
+* added semantic release ([4f7dc6a](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/4f7dc6a59d134d6a68abd42643552028efdc7656))
+* fix semantic ([881cffe](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/881cffe01e5d115e9410870db4c767642584111c))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

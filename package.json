@@ -1,7 +1,7 @@
 {
   "name": "tka-calendar",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thekitchen-agency/tka-vanilla-calendar.git"
@@ -33,7 +33,9 @@
     "@semantic-release/github": "^10.0.0"
   },
   "release": {
-    "branches": ["main"],
+    "branches": [
+      "main"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
