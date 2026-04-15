@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.0.7...v1.1.0) (2026-04-15)
+
+
+### Features
+
+* add interactive playground, premium options, and gh-pages deployment ([38b0950](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/38b0950902276c2ae6bc4e1e2cb3403e02440c85))
+
 ## [1.0.7](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.0.6...v1.0.7) (2026-04-15)
 
 
