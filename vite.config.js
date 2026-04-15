@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig(({ mode }) => {
-  const isLib = mode === 'lib';
-
-  if (isLib) {
+  // Use mode to differentiate builds
+  if (mode === 'lib') {
     return {
       build: {
         lib: {
@@ -24,8 +23,9 @@ export default defineConfig(({ mode }) => {
     }
   }
 
+  // Demo / Site Build
   return {
-    base: './',
+    base: '/tka-vanilla-calendar/',
     build: {
       outDir: 'dist',
       emptyOutDir: true,
