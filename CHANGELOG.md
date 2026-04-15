@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.6...v1.1.7) (2026-04-15)
+
+
+### Bug Fixes
+
+* separate site build into dist-site and update deploy workflow ([8404833](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/8404833062d46edd1601ef4a62a6bf1a132b404e))
+
 ## [1.1.6](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.5...v1.1.6) (2026-04-15)
 
 
