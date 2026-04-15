@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig(({ mode }) => {
-  // Use mode to differentiate builds
   if (mode === 'lib') {
     return {
       build: {
+        outDir: 'dist',
         lib: {
           entry: 'src/index.js',
           name: 'TkaCalendar',
@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
   return {
     base: '/tka-vanilla-calendar/',
     build: {
-      outDir: 'dist',
+      outDir: 'dist-site',
       emptyOutDir: true,
       rollupOptions: {
         input: {
