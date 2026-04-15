@@ -1,0 +1,26 @@
+{
+  "name": "tka-calendar",
+  "private": false,
+  "version": "1.0.51",
+  "type": "module",
+  "main": "./dist/tka-calendar.umd.cjs",
+  "module": "./dist/tka-calendar.js",
+  "exports": {
+    ".": {
+      "import": "./dist/tka-calendar.js",
+      "require": "./dist/tka-calendar.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "date-fns": "^3.6.0"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
