@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.5...v1.1.6) (2026-04-15)
+
+
+### Bug Fixes
+
+* use root-relative script paths for better bundler detection ([dc4aada](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/dc4aada95a99e65d3e14daad0263e0f3d0ee8551))
+
 ## [1.1.5](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.1.4...v1.1.5) (2026-04-15)
 
 
