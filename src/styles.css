@@ -1,28 +1,28 @@
 :root {
-  --tka-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --tka-bg: #0b1a30;
+  --tka-cal-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --tka-cal-bg: #0b1a30;
   /* Dark blue background */
-  --tka-bg-transparent: rgba(255, 255, 255, 0.05);
+  --tka-cal-bg-transparent: rgba(255, 255, 255, 0.05);
   /* slightly visible cell bg if needed */
-  --tka-text: #ffffff;
-  --tka-text-muted: rgba(255, 255, 255, 0.4);
-  --tka-border: rgba(255, 255, 255, 0.3);
-  --tka-primary: #3b82f6;
+  --tka-cal-text: #ffffff;
+  --tka-cal-text-muted: rgba(255, 255, 255, 0.4);
+  --tka-cal-border: rgba(255, 255, 255, 0.3);
+  --tka-cal-primary: #3b82f6;
   /* bright blue */
-  --tka-primary-hover: #2563eb;
-  --tka-radius: 8px;
-  --tka-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --tka-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --tka-cell-height: 80px;
+  --tka-cal-primary-hover: #2563eb;
+  --tka-cal-radius: 8px;
+  --tka-cal-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --tka-cal-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --tka-cal-cell-height: 80px;
 }
 
 .tka-calendar-wrapper {
-  font-family: var(--tka-font-family);
-  background: var(--tka-bg);
+  font-family: var(--tka-cal-font-family);
+  background: var(--tka-cal-bg);
   /* Optional: Background gradient to mimic topologic lines if we have an image, else plain gradient */
   background: linear-gradient(135deg, #07172b 0%, #0d284f 100%);
   border-radius: 12px;
-  color: var(--tka-text);
+  color: var(--tka-cal-text);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   position: relative;
@@ -59,7 +59,7 @@
 .tka-calendar-btn {
   background: transparent;
   border: none;
-  color: var(--tka-text);
+  color: var(--tka-cal-text);
   cursor: pointer;
   font-size: 1.25rem;
   padding: 0;
@@ -86,7 +86,7 @@
   font-weight: 400;
   font-size: 1.125rem;
   padding: 12px 0;
-  color: var(--tka-text);
+  color: var(--tka-cal-text);
 }
 
 /* Body / Days */
@@ -111,13 +111,13 @@
 .tka-calendar-day {
   margin: 0 4px;
   /* Creates visual gaps horizontally */
-  border: 1px solid var(--tka-border);
-  border-radius: var(--tka-radius);
+  border: 1px solid var(--tka-cal-border);
+  border-radius: var(--tka-cal-radius);
   background: transparent;
   display: flex;
   flex-direction: column;
   position: relative;
-  aspect-ratio: var(--tka-aspect-ratio, 1);
+  aspect-ratio: var(--tka-cal-aspect-ratio, 1);
   /* Inherits from user options */
   transition: background 0.2s, border-color 0.2s;
   cursor: default;
@@ -134,12 +134,12 @@
 }
 
 .tka-calendar-day.tka-muted .tka-day-number {
-  color: var(--tka-text-muted);
+  color: var(--tka-cal-text-muted);
 }
 
 /* Current Day Highlight */
 .tka-calendar-day.tka-today {
-  border-color: var(--tka-text);
+  border-color: var(--tka-cal-text);
   /* Highlight today's border */
   background: rgba(255, 255, 255, 0.05);
   /* Slight fill */
@@ -151,7 +151,7 @@
   font-weight: 300;
   margin: 8px auto auto auto;
   /* Push to the top center to prevent overlapping */
-  color: var(--tka-text);
+  color: var(--tka-cal-text);
 }
 
 /* Single Day Events (Dots) */
@@ -173,7 +173,7 @@
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  background: var(--tka-primary);
+  background: var(--tka-cal-primary);
   /* defaults if color not found */
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
@@ -233,7 +233,7 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  box-shadow: var(--tka-shadow-lg);
+  box-shadow: var(--tka-cal-shadow-lg);
   display: none;
   flex-direction: column;
   overflow: hidden;
@@ -280,7 +280,7 @@
   align-items: center;
   padding: 12px 20px;
   text-decoration: none;
-  color: var(--tka-text);
+  color: var(--tka-cal-text);
   transition: background 0.2s;
   gap: 16px;
 }
@@ -313,7 +313,7 @@
 
 .tka-event-card-meta {
   font-size: 0.7rem;
-  color: var(--tka-primary);
+  color: var(--tka-cal-primary);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -374,7 +374,7 @@
 
 @media (max-width: 640px) {
   :root {
-    --tka-slot-spacing: 10px;
+    --tka-cal-slot-spacing: 10px;
   }
 
   .tka-events-layer {

@@ -1,6 +1,6 @@
 # tka-calendar
 
-A high-performance, dark-themed, and fully responsive vanilla JavaScript calendar library. Designed to seamlessly handle complex event overlaps, multi-day span calculations, and beautiful mobile-optimized event cards.
+A high-performance, premium, and fully responsive vanilla JavaScript calendar library. Designed to handle complex event overlaps, multi-day span calculations, and beautiful mobile-optimized event cards.
 
 ![tka-calendar preview](https://via.placeholder.com/800x400.png?text=tka-calendar+Preview)
 
@@ -8,11 +8,12 @@ A high-performance, dark-themed, and fully responsive vanilla JavaScript calenda
 
 - **Zero UI Dependencies:** Pure Vanilla JS HTML/CSS generation. Only uses `date-fns` for lightweight, bulletproof date calculations.
 - **Dynamic Adaptive Layout:** 
-  - Desktop: Multi-day events span seamlessly across grid slots. Single day events compress into distinct colored dots (up to 6 per day).
+  - Desktop: Multi-day events span seamlessly across grid slots. Single day events compress into distinct colored dots.
   - Mobile (<640px): Day cells shrink gracefully. Multi-day overlaps convert to thin UI ribbons. Tooltips transform into smooth bottom-sheet modals.
-- **Smart Event Groupings:** Intelligently guarantees distinct event types/colors are prioritized on the UI before hiding duplicates under the "more" dot limit.
-- **Card-List Modals:** Event tooltips natively handle grouping multiple events on a single day. Built-in card list structure auto-scales with content, scrolling natively if needed.
-- **Customizable Formats & Aspect Ratios:** Configure exactly how dates are read, displayed, and how the CSS grid blocks are sized.
+- **Smart Event Groupings:** Intelligently prioritizes distinct event types/colors on the UI before showing overflow dots.
+- **Card-List Tooltips:** Unified card structure for viewing multiple events on one day, with native scrolling and mobile bottom-sheet support.
+- **Interactive:** Keyboard navigation (Arrows/Esc) and "Today" quick-reset built-in.
+- **Theming & Localization:** Fully localized via `date-fns` and skinnable through a dynamic theme property or CSS variables.
 
 ## Installation
 
@@ -36,72 +37,104 @@ Include the CSS file and import the JavaScript Class:
 ```javascript
 // app.js
 import { TkaCalendar } from 'tka-calendar';
-import 'tka-calendar/style.css'; // If using a bundler like Vite/Webpack
+import { de } from 'date-fns/locale';
+import 'tka-calendar/style.css';
 
 const myEvents = [
   {
     title: "Ice Diving Course",
-    type: "coursedata",
     start: "2026-04-17",
     end: "2026-04-17",
-    image: "https://example.com/image.jpg",
-    url: "https://example.com/ice-course",
     backgroundColor: "#2563EB",
-    isMultiDay: false,
-    parent: {
-        post_content: "Thrilling under-ice exploration..."
-    }
-  },
-  {
-      title: "Caribbean Trip",
-      type: "trip",
-      start: "2026-04-29",
-      end: "2026-05-10",
-      backgroundColor: "#F200FF",
-      isMultiDay: true
+    isMultiDay: false
   }
 ];
 
 const calendar = new TkaCalendar('#calendar-container', {
     events: myEvents,
-    inputFormat: 'yyyy-MM-dd',
-    outputFormat: 'dd.MM.yyyy',
-    aspectRatio: 1 // Controls the grid square dimensions
+    locale: de,
+    weekStartsOn: 1, // Monday
+    theme: {
+        primary: '#3b82f6',
+        radius: '12px'
+    }
 });
 ```
 
 ## Configuration Options
 
-When initializing `new TkaCalendar(selector, options)`, you can pass the following properties in the `options` object:
-
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `events` | `Array` | `[]` | Array of event objects to render. |
+| `locale` | `Object` | `de` | `date-fns` locale object for translations. |
 | `inputFormat` | `String` | `'yyyy-MM-dd'` | The date structure used in your event payload. |
-| `outputFormat` | `String` | `'dd.MM.yyyy'` | The format exposed to front-end labels and tooltips. |
-| `aspectRatio` | `Number` | `1` | Affects CSS width vs height calculations to keep cells square (`1`) or rectangular. |
+| `outputFormat` | `String` | `'dd.MM.yyyy'` | The format for front-end labels. |
+| `aspectRatio` | `Number` | `1` | Controls grid square dimensions (width / height). |
+| `weekStartsOn` | `Number` | `1` | `0` for Sunday, `1` for Monday, etc. |
+| `maxEventsDisplayed` | `Number` | `6` | Max dots shown in a day cell before overflow. |
+| `tooltip` | `Boolean` | `true` | Enable/Disable the event detail tooltip. |
+| `initialDate` | `Date\|String` | `now` | The date the calendar should start on. |
+| `showAdjacentDays` | `Boolean` | `true` | Show/hide days from prev/next months. |
+| `showHeader` | `Boolean` | `true` | Show/hide the navigation header. |
+| `showWeekdayHeader`| `Boolean` | `true` | Show/hide the weekday labels row. |
+| `todayBtn` | `Boolean` | `true` | Show/hide the "Today" button in the header. |
+| `minDate` | `Date\|String` | `null` | Prevents browsing before this date. |
+| `maxDate` | `Date\|String` | `null` | Prevents browsing after this date. |
+| `monthYearFormat` | `String` | `'MMMM yyyy'` | Header title format. |
+| `dayNamesFormat` | `String` | `'EEEEEE'` | Weekday header format (e.g. 'EEE' for Mon). |
+| `theme` | `Object` | `null` | Key-value mapping of CSS variable overrides. |
+| `onEventClick` | `Function` | `null` | Callback: `(eventData, mouseEvent) => {}`. |
+| `arrows` | `Object` | `null` | Custom HTML/SVG for navigation buttons: `{prev: '...', next: '...'}`. |
+
+## Theming
+
+You can customize the calendar looks via the `theme` object in options or by overriding CSS variables:
+
+```javascript
+theme: {
+    primary: '#3b82f6',
+    bg: '#0b1a30',
+    text: '#ffffff',
+    radius: '8px',
+    'slot-spacing': '26px' // Spacing for multi-day overlaps
+}
+```
+
+Equivalent CSS Variables:
+```css
+--tka-cal-primary: #3b82f6;
+--tka-cal-bg: #0b1a30;
+--tka-cal-text: #ffffff;
+--tka-cal-radius: 8px;
+```
+
+## API Methods
+
+- **`calendar.nextMonth()`**: Navigate forward.
+- **`calendar.prevMonth()`**: Navigate backward.
+- **`calendar.goToToday()`**: Jump to the current date.
+- **`calendar.destroy()`**: Clean up DOM and global event listeners.
 
 ## Event Object Structure
-
-The Calendar expects objects heavily mapped to your custom payload. The core requirements for the calendar engine are `start`, `end`, `backgroundColor`, and `isMultiDay`. 
 
 ```javascript
 {
   title: String,
-  type: String, // Renders as meta label
-  start: String, // Must match inputFormat
+  start: String, // Matches inputFormat
   end: String,
   backgroundColor: String, // HEX or RGB
-  isMultiDay: Boolean, // True converts to spanning ribbon
-  image: String, // (Optional) URL
-  url: String, // (Optional) Makes card clickable
-  parent: { // (Optional)
-    post_content: String // Extracted & clamped inside tooltip
-  }
+  isMultiDay: Boolean,
+  type: String, // (Optional) Meta tag in tooltip
+  image: String, // (Optional) Thumb in tooltip
+  url: String, // (Optional) Card CTA
+  parent: { post_content: String } // (Optional) Body text
 }
 ```
+
+## Keyboard Shortcuts
+- **Arrow Left / Right**: Previous / Next Month.
+- **Escape**: Close open tooltips.
 
 ## License
 
 MIT
-# tka-vanilla-calendar

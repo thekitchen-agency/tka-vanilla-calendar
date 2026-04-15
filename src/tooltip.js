@@ -11,7 +11,8 @@ export class Tooltip {
     this.el.className = 'tka-tooltip';
     document.body.appendChild(this.el);
 
-    document.addEventListener('click', this.handleOutsideClick.bind(this));
+    this.outsideClickHandler = this.handleOutsideClick.bind(this);
+    document.addEventListener('click', this.outsideClickHandler);
     
     this.el.addEventListener('click', (e) => {
         if (e.target.closest('.tka-tooltip-close')) {
@@ -22,6 +23,12 @@ export class Tooltip {
     this.overlay.addEventListener('click', () => {
         this.hide();
     });
+  }
+
+  destroy() {
+    document.removeEventListener('click', this.outsideClickHandler);
+    this.overlay.remove();
+    this.el.remove();
   }
 
   handleOutsideClick(e) {

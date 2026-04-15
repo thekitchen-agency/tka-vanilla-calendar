@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKA Calendar Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles.css">
+    <style>
+        :root {
+            --pg-bg: #f8fafc;
+            --pg-sidebar: #ffffff;
+            --pg-accent: #3b82f6;
+            --pg-border: #e2e8f0;
+            --pg-text: #1e293b;
+            --pg-text-muted: #64748b;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--pg-bg);
+            color: var(--pg-text);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--pg-sidebar);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--pg-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--pg-accent);
+        }
+
+        .playground-link {
+            text-decoration: none;
+            color: var(--pg-text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .playground-link:hover {
+            color: var(--pg-accent);
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 360px;
+            background: var(--pg-sidebar);
+            border-right: 1px solid var(--pg-border);
+            overflow-y: auto;
+            padding: 1.5rem;
+            box-shadow: 10px 0 15px -3px rgba(0,0,0,0.02);
+            z-index: 10;
+        }
+
+        .preview {
+            flex: 1;
+            padding: 3rem;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        #calendar-playground {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Controls Styling */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--pg-text-muted);
+            margin-bottom: 1rem;
+            display: block;
+            border-bottom: 1px solid var(--pg-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .field {
+            margin-bottom: 1.25rem;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid var(--pg-border);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .checkbox-field {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-field input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .color-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input[type="color"] {
+            border: none;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding: 0;
+            background: none;
+        }
+
+        #code-output {
+            background: #1e293b;
+            color: #cbd5e1;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>tka-calendar <small style="font-weight: 400; color: #94a3b8; font-size: 0.9rem;">Playground</small></h1>
+        <a href="/" class="playground-link">Demo View</a>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="section">
+                <span class="section-title">General Settings</span>
+                <div class="field">
+                    <label>Locale</label>
+                    <select id="opt-locale">
+                        <option value="de">German (de)</option>
+                        <option value="enUS">English (en-US)</option>
+                        <option value="fr">French (fr)</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Week Starts On</label>
+                    <select id="opt-weekstarts">
+                        <option value="1">Monday (1)</option>
+                        <option value="0">Sunday (0)</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Aspect Ratio</label>
+                    <input type="number" id="opt-aspect" value="1" step="0.1" min="0.5" max="2">
+                </div>
+                <div class="field">
+                    <label>Max Events Displayed</label>
+                    <input type="number" id="opt-maxevents" value="6" min="1" max="10">
+                </div>
+            </div>
+
+            <div class="section">
+                <span class="section-title">Visibility</span>
+                <div class="field">
+                    <label class="checkbox-field">
+                        <input type="checkbox" id="opt-tooltip" checked> Show Tooltip
+                    </label>
+                </div>
+                <div class="field">
+                    <label class="checkbox-field">
+                        <input type="checkbox" id="opt-adjacent" checked> Show Adjacent Days
+                    </label>
+                </div>
+                <div class="field">
+                    <label class="checkbox-field">
+                        <input type="checkbox" id="opt-header" checked> Show Header
+                    </label>
+                </div>
+                <div class="field">
+                    <label class="checkbox-field">
+                        <input type="checkbox" id="opt-weekday" checked> Show Weekday Header
+                    </label>
+                </div>
+                <div class="field">
+                    <label class="checkbox-field">
+                        <input type="checkbox" id="opt-todaybtn" checked> Show Today Button
+                    </label>
+                </div>
+            </div>
+
+            <div class="section">
+                <span class="section-title">Limits & Dates</span>
+                <div class="field">
+                    <label>Min Date</label>
+                    <input type="date" id="opt-mindate">
+                </div>
+                <div class="field">
+                    <label>Max Date</label>
+                    <input type="date" id="opt-maxdate">
+                </div>
+                <div class="field">
+                    <label>Initial Date</label>
+                    <input type="date" id="opt-initdate">
+                </div>
+            </div>
+
+            <div class="section">
+                <span class="section-title">Theming</span>
+                <div class="color-row">
+                    <div class="field">
+                        <label>Primary</label>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="opt-color-primary" value="#3b82f6">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Background</label>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="opt-color-bg" value="#0b1a30">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Border Radius</label>
+                    <input type="text" id="opt-radius" value="8px">
+                </div>
+            </div>
+
+            <div class="section">
+                <span class="section-title">Generated Config</span>
+                <div id="code-output"></div>
+            </div>
+        </aside>
+
+        <main class="preview">
+            <div id="calendar-playground"></div>
+        </main>
+    </div>
+
+    <script type="module" src="/playground.js"></script>
+</body>
+</html>

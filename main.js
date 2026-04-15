@@ -1,4 +1,6 @@
 import { TkaCalendar } from './src/index.js';
+import { de } from 'date-fns/locale';
+import { addMonths } from 'date-fns';
 
 const events = [
     {
@@ -468,4 +470,32 @@ const events = [
     }
 ];
 
-const calendar = new TkaCalendar('#app', { events, aspectRatio: 1 });
+const calendar = new TkaCalendar('#app', {
+    events,
+    aspectRatio: 1,
+    locale: de,
+    inputFormat: 'yyyy-MM-dd',
+    outputFormat: 'dd.MM.yyyy',
+    maxEventsDisplayed: 2,
+    tooltip: true,
+    weekStartsOn: 1,
+    showAdjacentDays: true,
+    showHeader: true,
+    showWeekdayHeader: true,
+    monthYearFormat: 'MMMM yyyy',
+    dayNamesFormat: 'EEEEEE',
+    onEventClick: (event, e) => {
+        console.log('Event clicked:', event);
+    },
+    minDate: new Date(),
+    maxDate: addMonths(new Date(), 6),
+    todayBtn: true,
+    theme: {
+        primary: '#3b82f6',
+        radius: '12px'
+    },
+    arrows: {
+        prev: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>`,
+        next: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>`
+    }
+});
