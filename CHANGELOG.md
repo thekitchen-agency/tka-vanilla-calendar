@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/thekitchen-agency/tka-vanilla-calendar/compare/v1.0.6...v1.0.7) (2026-04-15)
+
+
+### Bug Fixes
+
+* test ([801c05d](https://github.com/thekitchen-agency/tka-vanilla-calendar/commit/801c05d1d10afb0c66822deca15b2bf10de0d574))
+
 # 1.0.0 (2026-04-15)
 
 
