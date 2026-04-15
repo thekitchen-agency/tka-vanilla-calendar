@@ -1,21 +1,26 @@
-name: Publish Package to npmjs
+name: Release and Publish
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write    # Required to push commits/tags back to the repo
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for semantic-release to read commit history
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: '20.x'
 
@@ -23,9 +28,12 @@ jobs:
         run: |
           npm install -g npm@latest
           npm ci
-        
+
       - name: Build package
         run: npm run build
 
-      - name: Publish to npm
-        run: npm publish --provenance
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+        run: npx semantic-release
