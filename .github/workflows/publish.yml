@@ -20,10 +20,12 @@ jobs:
           node-version: '20.x'
 
       - name: Install dependencies
-        run: npm ci
-
+        run: |
+          npm install -g npm@latest
+          npm ci
+        
       - name: Build package
         run: npm run build
 
       - name: Publish to npm
-        run: npm publish --provenance --access public
+        run: npm publish --provenance
