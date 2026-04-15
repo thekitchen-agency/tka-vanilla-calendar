@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
   return {
     base: './',
     build: {
-      outDir: 'dist-demo',
+      outDir: 'dist',
       emptyOutDir: true,
       rollupOptions: {
         input: {
