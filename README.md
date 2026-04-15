@@ -4,6 +4,11 @@ A high-performance, premium, and fully responsive vanilla JavaScript calendar li
 
 ![tka-calendar preview](https://via.placeholder.com/800x400.png?text=tka-calendar+Preview)
 
+## Live Demos
+
+- 🚀 **[Official Demo](https://thekitchen-agency.github.io/tka-vanilla-calendar/)**
+- 🛠️ **[Interactive Playground](https://thekitchen-agency.github.io/tka-vanilla-calendar/playground.html)** - Test all options and generate your config!
+
 ## Features
 
 - **Zero UI Dependencies:** Pure Vanilla JS HTML/CSS generation. Only uses `date-fns` for lightweight, bulletproof date calculations.
