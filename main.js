@@ -1,6 +1,6 @@
 import { TkaCalendar } from './src/index.js';
-import { de } from 'date-fns/locale';
-import { addMonths } from 'date-fns';
+import { de } from 'date-fns/locale/de';
+import { addMonths } from 'date-fns/addMonths';
 
 const events = [
     {
